@@ -8,21 +8,19 @@ import fetch from 'isomorphic-fetch';
 
 // action creators go here
 
-export const loadMovies = (searchParam, dispatch) => {
+export function loadMovies(searchParam) {
 	// fetch happens inside load request action creator!
-		//my added code
-			console.log(searchParam);
-		//end added
-			// indicate we are loading movies now
-			dispatch(requestMovies());
+		return function(dispatch){
+			// console.log(searchParam);
+			// http://www.omdbapi.com/?apikey=499a9c60
 
-			fetch(`http://www.omdbapi.com/?apikey=499a9c60&s=${searchParam}`)
+			fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=499a9c60&s=${searchParam}`)
   .then((response) => response.json())
   .then((responseJson) =>{
-//my added code
+
 			console.log(responseJson);
 
-		 if (!responseJson.ok) {
+		 if (responseJson.Response !== 'False') {
 		       dispatch(someActionCreator(responseJson))
          }
 
@@ -48,6 +46,7 @@ export const loadMovies = (searchParam, dispatch) => {
 					})
 
   // end added
+}
 };
 
 

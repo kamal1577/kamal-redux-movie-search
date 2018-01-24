@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react'
+import { loadMovies } from '../actions';
+import { connect } from 'react-redux'
 
 class MovieList extends Component {
 	constructor(props) {
@@ -9,7 +11,8 @@ class MovieList extends Component {
 	onSearch(event) {
 		// ...
 				//My added code
-				this.props.onSearchChange(event.target.value);
+				event.preventDefault();
+				this.props.dispatch(loadMovies(event.target.value));
 				//end added
 	}
 
@@ -19,9 +22,11 @@ class MovieList extends Component {
 	}
 
 	render() {
-		console.log(">>>gdhgdhtdht>",this.props)
+		// console.log(">>>gdhgdhtdht>",this.props)
 		const movies = this.props.movies.map((movie) => {
-			return <li key={movie.imdbID}>{movie.Title}</li>
+			return (
+				<li key={movie.imdbID}>{movie.Title}</li>
+				);
 		});
 		return (
 			<div>
@@ -49,4 +54,4 @@ MovieList.propTypes = {
 	onDidMount: PropTypes.func
 };
 
-export default MovieList;
+export default connect()(MovieList);

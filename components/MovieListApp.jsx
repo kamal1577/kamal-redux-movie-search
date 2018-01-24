@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   // ...
 //my added code
         return{
-            requestPending: state.isLoading,
+            // requestPending: state.isLoading,
             movies: state.movies
             }
   //end added
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   //my added code
   return{
           onSearchChange: (searchParam)=> {
-                 requestMovies(searchParam, dispatch)
+                 loadMovies(searchParam)
           },
           onDidMount: () => {
             loadMovies

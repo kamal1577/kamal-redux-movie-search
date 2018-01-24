@@ -9,7 +9,7 @@ const initialState = {
 
 export default function(state = initialState, action){
   switch(action.type) {
-    case 'LOAD_REQUEST':
+    case LOAD_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -17,7 +17,7 @@ export default function(state = initialState, action){
         isSuccess: false
       };
 
-    case 'LOAD_SUCCESS': {
+    case LOAD_SUCCESS: {
       return {
         ...state,
         isLoading: true,
@@ -27,7 +27,7 @@ export default function(state = initialState, action){
       };
     }
 
-    case 'LOAD_FAILURE': {
+    case LOAD_FAILURE: {
       // ....
         //myadded code
         return{
